@@ -1,0 +1,94 @@
+:root{
+  --bg-1: #031305;            /* темный фон */
+  --bg-2: #062b06;
+  --card-bg: rgba(10, 30, 10, 0.55);
+  --glass: rgba(255,255,255,0.03);
+  --neon: #39ff14;            /* неоновый лаймовый */
+  --neon-2: #00ff7f;
+  --muted: #9fd89f;
+  --text: #e9ffe9;
+  --accent: linear-gradient(135deg, rgba(57,255,20,0.12), rgba(0,255,127,0.08));
+  --radius: 16px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Баз */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg-1);color:var(--text);-webkit-font-smoothing:antialiased}
+.bg-canvas{
+  position:fixed; inset:0; z-index:0; display:block;
+}
+
+/* Header */
+.site-header{
+  position:fixed; z-index:30; left:0; right:0; top:18px; display:flex; justify-content:space-between; align-items:center;
+  padding:14px 40px;
+  pointer-events:auto;
+}
+.logo{font-weight:700; font-size:20px; color:var(--neon); text-shadow:0 0 10px rgba(57,255,20,0.12)}
+.logo .dot{color:var(--neon-2); margin-left:6px}
+.nav{display:flex; gap:18px; align-items:center}
+.nav a{color:var(--muted); text-decoration:none; font-size:14px}
+.btn{border:0;padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:600}
+.btn-cta{background:transparent; border:1px solid rgba(57,255,20,0.12); color:var(--neon)}
+.btn-primary{background:linear-gradient(90deg, rgba(57,255,20,0.12), rgba(0,255,127,0.12)); color:var(--neon); box-shadow:0 6px 18px rgba(0,255,127,0.06); text-decoration:none; display:inline-block}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04); color:var(--muted); text-decoration:none}
+.small-btn{display:inline-block;margin-top:12px;color:var(--neon);text-decoration:none;font-size:13px}
+
+/* Контент */
+.container{
+  position:relative; z-index:10; padding:120px 40px 80px; max-width:1100px; margin:0 auto;
+}
+
+/* Hero */
+.hero{display:flex; gap:30px; align-items:center; margin-bottom:48px}
+.hero-left{flex:1; max-width:640px}
+.title{font-size:44px; margin:0 0 12px; line-height:1.03; letter-spacing:-0.02em; color: #dfffe0; text-shadow: 0 6px 30px rgba(0,255,127,0.06)}
+.subtitle{color:var(--muted); font-size:16px; margin-bottom:18px}
+.hero-ctas{display:flex; gap:12px; margin-bottom:26px}
+.features{display:flex; gap:12px; margin-top:6px}
+.feature{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:12px 14px; border-radius:12px; width:33%}
+.feature h4{margin:0 0 6px; font-size:14px; color:var(--neon)}
+.feature p{margin:0; color:var(--muted); font-size:13px}
+
+/* Правый блок — картинка */
+.hero-right{width:360px; dis  <link rel="stylesheet" href="assets/css/main.css">play:flex; justify-content:center; align-items:center}
+.card-3d{
+  width:320px; height:420px; border-radius:18px; overflow:hidden;
+  /* background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.25));
+  box-shadow: 0 20px 60px rgba(0,255,127,0.06), inset 0 1px 0 rgba(255,255,255,0.02); 
+  border:1px solid rgba(57,255,20,0.06); */
+  transform:translateY(0); transition:transform .3s ease;
+}
+.card-3d img{width:100%; height:100%; object-fit:cover; display:block}
+
+/* Courses */
+.courses{margin-top:40px}
+.courses h2{font-size:20px; margin-bottom:18px; color:#eaffea}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px}
+.course{
+  background:linear-gradient(180deg, rgba(31, 7, 7, 0.02), rgba(255,255,255,0.01));
+  border-radius:14px; padding:16px; min-height:150px; border:1px solid rgba(0,255,127,0.04);
+}
+.thumb{height:90px; background:linear-gradient(120deg, rgba(57,255,20,0.06), rgba(0,255,127,0.04)); border-radius:10px; margin-bottom:12px}
+
+/* CTA strip */
+.info-cta{margin-top:32px; padding:22px; display:flex; justify-content:space-between; align-items:center; background:var(--card-bg); border-radius:12px; border:1px solid rgba(0,255,127,0.04)}
+.info-cta h3{margin:0;font-size:18px}
+.info-cta p{margin:0;color:var(--muted)}
+
+/* Footer */
+.footer{padding:28px 40px; text-align:center; color:var(--muted); border-top:1px solid rgba(255,255,255,0.02); margin-top:40px}
+
+/* Мелкие адаптивы */
+@media (max-width:900px){
+  .hero{flex-direction:column}
+  .hero-right{width:100%; order: -1}
+  .container{padding:100px 20px}
+  .site-header{padding:12px 20px}
+}
+
+/* Небольшие проявления неон-эффекта */
+.btn-primary, .logo, .feature h4, .small-btn{transition:all .18s ease}
+.btn-primary:hover{transform:translateY(-3px); box-shadow:0 14px 40px rgba(0,255,127,0.12)}
+.card-3d:hover{transform:translateY(-8px)}
