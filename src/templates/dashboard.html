@@ -1,0 +1,75 @@
+{{define "content"}}
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2rem;">
+  <div>
+    <h1>SYSTEM STATUS: <span class="highlight">ONLINE</span></h1>
+    <span class="dim">Welcome back, User #{{.UserID}}</span>
+  </div>
+  <div style="text-align:right;">
+    <div class="highlight" style="font-family:var(--font-tech); font-size:1.2rem;">LVL {{.Level}}</div>
+    <div class="dim">XP: {{.XP}} / {{.NextLevelXP}}</div>
+  </div>
+</div>
+
+<div class="stats-grid">
+  <!-- Current Roadmap Card -->
+  <div class="card" style="grid-column: span 2;">
+    <div class="card-header">📂 CURRENT ROADMAP</div>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+      <div>
+        <h2 style="color:white; margin-bottom:0.5rem;">GO BACKEND DEVELOPER</h2>
+        <span class="dim">Next milestone: Concurrency Patterns</span>
+      </div>
+      <div style="text-align:right;">
+        <span class="highlight" style="font-size:1.5rem;">45%</span>
+      </div>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" style="width: 45%;"></div>
+    </div>
+    <div style="margin-top: 1rem; display:flex; gap:1rem;">
+      <a href="/roadmap" class="btn">CONTINUE &gt;&gt;</a>
+      <button class="btn" style="border-color:var(--text-dim); color:var(--text-dim);">DETAILS</button>
+    </div>
+  </div>
+
+  <!-- Streak & Tasks Card -->
+  <div class="card">
+    <div class="card-header">🔥 STREAK &amp; TASKS</div>
+    <div style="display:flex; align-items:center; gap:1rem; margin-bottom: 1rem;">
+      <div style="font-size:2rem; color:var(--neon-green);">14</div>
+      <div>
+        <div class="highlight">DAYS</div>
+        <div class="dim">Keep it up!</div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid var(--border-color); padding-top: 0.5rem;">
+      <div class="dim" style="margin-bottom:0.5rem;">DAILY TASKS:</div>
+      <div style="font-family:var(--font-tech); font-size:0.9rem; color:var(--text-main); margin-bottom:0.3rem;">
+        [x] Complete Lesson #4
+      </div>
+      <div style="font-family:var(--font-tech); font-size:0.9rem; color:var(--text-dim); margin-bottom:0.3rem;">
+        [ ] Submit Quiz #2
+      </div>
+      <div style="font-family:var(--font-tech); font-size:0.9rem; color:var(--text-dim);">
+        [ ] Read "Goroutines" article
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Quick Actions / Social Teaser -->
+<div class="card">
+  <div class="card-header">🌐 NETWORK ACTIVITY</div>
+  <div style="display:flex; gap:1rem;">
+    <button class="btn btn-sm" hx-post="/api/generate-roadmap" hx-target="#roadmap-preview">
+      GENERATE NEW ROADMAP
+    </button>
+    <button class="btn btn-sm" style="border-color:var(--text-dim); color:var(--text-dim);">
+      VIEW FEED
+    </button>
+  </div>
+  <div id="roadmap-preview" style="margin-top:1rem;">
+    <span class="htmx-indicator">⏳ SYSTEM PROCESSING...</span>
+  </div>
+</div>
+{{end}}
